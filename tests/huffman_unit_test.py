@@ -15,7 +15,7 @@ class HuffmanCompressionUnitTest(unittest.TestCase):
         print(decompressed)
         self.assertEqual(text, decompressed)
 
-    def text_huffman_string(self):
+    def test_huffman_string(self):
         huffman = HuffmanCompressor()
         original = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ' \
                    'the industry standard dummy text ever since the 1500s, when an unknown printer took a galley ' \

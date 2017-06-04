@@ -2,7 +2,7 @@
 pycompressor
 -----
 
-Package pycompressor implements a statistical inference engine
+Package pycompressor implements a string compressor
 """
 
 import re
@@ -28,7 +28,7 @@ setup(
     license='MIT',
     author='Xianshun Chen',
     author_email='xs0040@gmail.com',
-    description='Python implementation of a statistical inference engine',
+    description='Python implementation of a string compressor',
     long_description=long_description(),
     packages=['pycompressor'],
     include_package_data=True,

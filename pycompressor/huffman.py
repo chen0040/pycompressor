@@ -1,6 +1,5 @@
 from pycompressor.priority_queue import MinPQ
 from pycompressor.queue import Queue
-from pycompressor.trie import TernarySearchTrie
 
 
 class Node(object):
@@ -56,6 +55,37 @@ class HuffmanCompressor(object):
         self.write_trie(trie, bit_stream)
         self.write_text(code, text, bit_stream)
         return bit_stream
+
+    def decompress_from_binary(self, bit_stream):
+        trie = self.read_trie(bit_stream)
+        code = {}
+        self.build_code(trie, '', code)
+        rcode = {}
+        for key in code.keys():
+            rcode[code[key]] = key
+        return self.read_text(rcode, bit_stream)
+
+    def read_text(self, code, bit_stream):
+        text = ''
+        cc = ''
+        while not bit_stream.is_empty():
+            bit = bit_stream.dequeue()
+            if bit == 0:
+                cc = cc + '0'
+            else:
+                cc = cc + '1'
+            if cc in code:
+                text = text + chr(code[cc])
+                cc = ''
+        return text
+
+    def read_trie(self, bit_stream):
+        bit = bit_stream.dequeue()
+        if bit == 1:
+            return Node(key=read_char(bit_stream))
+        left = self.read_trie(bit_stream)
+        right = self.read_trie(bit_stream)
+        return Node(left=left,right=right)
 
     def write_text(self, code, text, bit_stream):
         for i in range(len(text)):

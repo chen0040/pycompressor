@@ -30,6 +30,9 @@ Run the following command to install pycompressor using pip
 Features:
 =========
 
-.. _`docs`: http://pycompressor.readthedocs.org/en/latest/
-.. _`documentation`: http://pycompressor.readthedocs.org/en/latest/
+
+Usage:
+======
+
+
 

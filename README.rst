@@ -13,7 +13,6 @@ Package provides python implementation of string compressor
     :target: https://scrutinizer-ci.com/g/chen0040/pycompressor/?branch=master
 
 
-More details are provided in the `docs`_ for implementation, complexities and further info.
 
 Install
 =======
@@ -29,6 +28,7 @@ Usage:
 ======
 
 .. code-block:: python
+
 
     from pycompressor.huffman import HuffmanCompressor
     huffman = HuffmanCompressor()

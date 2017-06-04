@@ -9,9 +9,6 @@ Package provides python implementation of string compressor
 .. image:: https://coveralls.io/repos/github/chen0040/pycompressor/badge.svg?branch=master
     :target: https://coveralls.io/github/chen0040/pycompressor?branch=master
 
-.. image:: https://readthedocs.org/projects/pycompressor/badge/?version=latest
-    :target: http://pycompressor.readthedocs.org/en/latest/?badge=latest
-
 .. image:: https://scrutinizer-ci.com/g/chen0040/pycompressor/badges/quality-score.png?b=master
     :target: https://scrutinizer-ci.com/g/chen0040/pycompressor/?branch=master
 
@@ -33,6 +30,10 @@ Features:
 
 Usage:
 ======
+
+.. code-block:: python
+
+    from pycompressor.huffman import HuffmanCompressor
 
 
 

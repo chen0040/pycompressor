@@ -38,6 +38,8 @@ def write_char(char, bit_stream):
 def read_char(bit_stream):
     a = [0] * 8
     for i in range(8):
+        if bit_stream.is_empty():
+            break
         a[i] = bit_stream.dequeue()
 
     char = 0
@@ -65,6 +67,19 @@ class HuffmanCompressor(object):
             rcode[code[key]] = key
         return self.read_text(rcode, bit_stream)
 
+    def compress_to_string(self, text):
+        bit_stream = self.compress_to_binary(text)
+        result = ''
+        while not bit_stream.is_empty():
+            result = result + chr(read_char(bit_stream))
+        return result
+
+    def decompress_from_string(self, text):
+        bit_stream = Queue()
+        for i in range(len(text)):
+            write_char(char_at(text, i), bit_stream)
+        return self.decompress_from_binary(bit_stream)
+
     def read_text(self, code, bit_stream):
         text = ''
         cc = ''
@@ -85,7 +100,7 @@ class HuffmanCompressor(object):
             return Node(key=read_char(bit_stream))
         left = self.read_trie(bit_stream)
         right = self.read_trie(bit_stream)
-        return Node(left=left,right=right)
+        return Node(left=left, right=right)
 
     def write_text(self, code, text, bit_stream):
         for i in range(len(text)):
@@ -95,7 +110,6 @@ class HuffmanCompressor(object):
                     bit_stream.enqueue(0)
                 elif cc[j] == '1':
                     bit_stream.enqueue(1)
-
 
     def build_code(self, x, prefix, code):
         if x.is_leaf():

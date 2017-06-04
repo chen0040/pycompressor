@@ -1,3 +1,5 @@
+
+
 class TsNode(object):
     key = None
     value = None
@@ -87,3 +89,33 @@ class TernarySearchTrie(object):
         if x is not None:
             self.N -= 1
             x.value = None
+
+    def values(self):
+        queue = []
+        self._collect_values(self.root, "", queue)
+        return queue
+
+    def keys(self):
+        queue = []
+        self._collect(self.root, "", queue)
+        return queue
+
+    def _collect(self, x, prefix, queue):
+        if x is None:
+            return
+        if x.value is not None:
+            queue.append(prefix + chr(x.key))
+
+        self._collect(x.left, prefix, queue)
+        self._collect(x.mid, prefix + chr(x.key), queue)
+        self._collect(x.right, prefix, queue)
+
+    def _collect_values(self, x, prefix, queue):
+        if x is None:
+            return
+        if x.value is not None:
+            queue.append(x.value)
+
+        self._collect(x.left, prefix, queue)
+        self._collect(x.mid, prefix + chr(x.key), queue)
+        self._collect(x.right, prefix, queue)

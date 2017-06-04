@@ -29,6 +29,9 @@ class TernarySearchTrieUnitTest(unittest.TestCase):
         self.assertEqual(trie.size(), 21)
         self.assertFalse(trie.contains_key("Hi"))
 
+        for key in trie.keys():
+            print(key)
+
 
 if __name__ == '__main__':
     unittest.main()

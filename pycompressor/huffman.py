@@ -19,7 +19,7 @@ class Node(object):
 
 
 def char_at(text, i):
-    if len(text) - 1 <= i:
+    if len(text) - 1 < i:
         return -1
     return ord(text[i])
 

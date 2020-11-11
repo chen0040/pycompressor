@@ -37,7 +37,7 @@ setup(
     setup_requires=["numpy"],
     install_requires=[
         "scipy",
-        "enum"
+        "enum34"
     ],
     classifiers=[
         'License :: OSI Approved :: MIT License',
